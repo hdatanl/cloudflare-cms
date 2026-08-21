@@ -1,0 +1,27 @@
+{
+  "name": "cloudflare-cms",
+  "version": "1.0.0",
+  "description": "Volwaardig CMS op Cloudflare Workers, D1 en R2",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node16 --outfile=dist/index.js",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply production",
+    "db:local": "wrangler d1 execute production --local --file=./schema.sql"
+  },
+  "dependencies": {
+    "itty-router": "^4.1.2",
+    "jose": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "speakeasy": "^2.0.0",
+    "qrcode": "^1.5.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230821.0",
+    "typescript": "^5.1.6",
+    "wrangler": "^3.11.0",
+    "esbuild": "^0.19.0"
+  }
+}
